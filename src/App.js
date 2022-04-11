@@ -9,7 +9,7 @@ const App = ()  => {
   const [page, setPage] = useState('people');
   return (
     <div className="App">
-      <Navbar />
+      <Navbar setPage={setPage}/>
         <div className="content">
           { page === 'people' ? <People /> : <Planets />}
         </div>
