@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useQuery } from 'react-query';
 import { fetchPages } from '../API';
+import Creatures from './Creatures';
 
 const Species = () => {
   const onSuccess = () => console.log('Species fetched successfully');
@@ -17,7 +18,7 @@ const Species = () => {
         <button onClick={() => setPage(old => data?.next ? old + 1 : old)} disabled={!data || !data.next}>Next</button>
         {isLoading && <p>Loading...</p>}
         {isError && <p>{error.message}</p>}
-        {data?.results.map(species => <p key={species.name}>{species.name}</p>)}
+        {data?.results.map(species => <Creatures key={species.name} creatures={species} />)}
       </div>
     )
 }
