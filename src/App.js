@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import Home from './components/Home';
 import './CSS/App.css';
-import Planets from './components/Planets';
-import People from './components/People';
-import Species from './components/Species';
+import Person from './components/Person';
 
 const App = ()  => {
-  const [page, setPage] = useState('people');
   return (
-    <div className="App">
-      <Navbar setPage={setPage}/>
-        <div className="content">
-        {page === 'people'  && <People />}
-        {page === 'planets' && <Planets />}
-        {page === 'species' && <Species />}
-        </div>
+  <div className="App">
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/person/:personId" element={<Person />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
