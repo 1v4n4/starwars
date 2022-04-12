@@ -8,7 +8,7 @@ const Species = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading, isError, error } = useQuery(['species', 'species', page], () => fetchPages('species', page), {
     onSuccess,
-    onError: () => console.log('Species fetch failed'),
+    onError: () => console.log('Species fetch failed')
   })
   console.log(data);
     return (
@@ -18,7 +18,7 @@ const Species = () => {
         <button onClick={() => setPage(old => data?.next ? old + 1 : old)} disabled={!data || !data.next}>Next</button>
         {isLoading && <p>Loading...</p>}
         {isError && <p>{error.message}</p>}
-        {data?.results.map(species => <Creatures key={species.name} creatures={species} />)}
+        {data?.results?.map(species => <Creatures key={species.name} creatures={species} />)}
       </div>
     )
 }

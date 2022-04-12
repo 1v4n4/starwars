@@ -19,7 +19,7 @@ const Planets = () => {
         <button onClick={() => setPage(1)}>Page 1</button>
         <button onClick={() => setPage(2)}>Page 2</button>
         <button onClick={() => setPage(3)}>Page 3</button>
-        {data.results.map(planet => <Planet planet={planet} key={planet.name} />)}
+        {data?.results?.map(planet => <Planet planet={planet} key={planet.name} />)}
         </div>)}
     </div>
   )
