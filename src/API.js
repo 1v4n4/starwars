@@ -3,4 +3,11 @@ const fetchPages = async (keyword, page) => {
   return res.json();
 };
 
-export { fetchPages };
+const fetchDetails = async (url) => {
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data);
+  return data;
+};
+
+export { fetchPages, fetchDetails };
