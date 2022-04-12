@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Planet from './Planet';
-
-const fetchPlanets = async (page) => {
-  const res = await fetch(`https://swapi.dev/api/planets/?page=${page}`);
-  return res.json();
-};
+import { fetchPages } from '../API';
 
 const Planets = () => {
   const [page, setPage] = useState(1);
-  const { data, status } = useQuery(['planets', page], ()=>fetchPlanets(page), fetchPlanets, {
+  const { data, status } = useQuery(['planets', 'planets', page], ()=>fetchPages('planets', page), {
     staleTime: 5000,
     onSuccess: () => console.log('Planets fetched successfully'),
     refetchOnMount: true,

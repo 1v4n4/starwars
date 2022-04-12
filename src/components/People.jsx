@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Person from './Person';
-
-const fetchPeople = async (page) => {
-  const res = await fetch(`https://swapi.dev/api/people/?page=${page}`);
-  return res.json();
-};
+import { fetchPages } from '../API';
 
 const People = () => {
-    const [page, setPage] = useState(1);
-    const { data, status } = useQuery(['people', page ], () => fetchPeople(page), {
+  const [page, setPage] = useState(1);
+  const { data, status } = useQuery(['people', 'people', page], () => fetchPages('people', page), {
     keepPreviousData: true,
   })
+
   console.log(data);
+
   return (
     <div>
       <h1>People</h1>
