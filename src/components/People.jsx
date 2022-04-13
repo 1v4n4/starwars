@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useQuery } from 'react-query';
-import Person from './Person';
-import { fetchPages } from '../API';
 import usePeopleData from '../hooks/usePeopleData';
 
 const People = () => {
